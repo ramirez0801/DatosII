@@ -1,5 +1,6 @@
 //Emmanuel Ramirez Garcia
 //23 de agosto 2022
+//Datos 2
 
 #include <iostream>
 
