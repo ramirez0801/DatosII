@@ -1,19 +1,17 @@
+#ifndef ALBUM_H
+#define ALBUM_H
 
-#include <iostream>
-
-
-using namespace std;
-
-class Album{
-    private:
+class album
+{
+	private:
         int id;
-        string nombre, num_canc, artista;
+        char nombre[25], num_canc[25], artista[25];
     public:
-        Album();
-        void agrgar(int*);
-        void mostrar();
+        album(char, char, char, int);
         int getId();
-        void eliminar(int*, Album);
+        char getNombre();
+        char getArtista();
+        char getCanc();
 };
 
-
+#endif
