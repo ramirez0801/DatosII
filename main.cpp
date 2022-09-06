@@ -1,150 +1,139 @@
-//Emmanuel Ramirez Garcia
-//23 de agosto 2022
-//Seminario de Estructura de Datos 2
-
 #include <iostream>
-#include <conio.h>
-#include <stdlib.h>
+#include <string.h>
+
+
 
 using namespace std;
 
-struct album{
-    int id;
-    char nombre[25], artista[25], num_canc[3];
+class Album{
+    private:
+        int id;
+        string nombre, num_canc, artista;
+    public:
+        Album();
+        void agrgar(int*);
+        void mostrar();
+        int getId();
 };
 
-void salto(){
-    cout<<"Presione enter para continuar..";
-    getch();
+
+void salto()
+{
+    system("PAUSE");
     system("cls");
 }
 
-int agregar(int c, album alb[], int i){
-    cout<<"Ingrese el nombre del album: ";
-    cin.getline(alb[i].nombre,25);
-    cout<<"Ingrese el numero de canciones del album: ";
-    cin.getline(alb[i].num_canc,5);
-    cout<<"Ingrese el nombre del artista: ";
-    cin.getline(alb[i].artista,25);
-    alb[i].id = i + 1;
-    c++;
-    return c;
-    salto();
-}
-
-int eliminar(int c, album alb[]){
-	int bus,b =0 ;
-    cout<<"Ingrese el id a eliminar: ";
+void eliminar(int *pi, Album alb[])
+{
+    int bus, b = 0,ide;
+    cout<<"Esxriba el id a eliminar: ";
     cin>>bus;
-
-    for(int i = 0; i <= c; i++)
+    for(int j = 0; j < *pi; j++)
     {
-        if(alb[i].id == bus)
+        ide = alb[j].getId();
+        if(bus == ide)
         {
-            for(int j = i; j < c; j++)
-        	    alb[j] = alb[j+1];
-        	cout<<"Registro eliminado";
-            c--;
+            for(int k = j; k < *pi; k++)
+            {
+                alb[k] = alb[k+1];
+            }
+            cout<<"Album eliminado"<<endl;
             b = 1;
-        	break;
+            *pi = *pi - 1;
+            salto();
+            break;
         }
     }
     if(b == 0)
-    {
-        cout<<"No se encontro";
-        salto();
-    }
-    return c;
-    
+        cout<<"Album no encontrado";
 }
 
-void buscar(int c, album alb[]){
-    int bus, encontrado = 0;
-    cout<<"Ingrese el id a buscar: ";
-    cin>>bus;
-    for(int i = 0; i < c; i++){
-        if(alb[i].id == bus)
-        {
-            cout<<"ID: "<<alb[i].id<<endl;
-            cout<<"Nombre del album: "<<alb[i].nombre<<endl;
-            cout<<"Artista: "<<alb[i].artista<<endl;
-            cout<<"Numero de canciones: "<<alb[i].num_canc<<endl;
-            salto();
-            encontrado = 1;
-            break;
-        }        
-    }
-    if(encontrado == 0){
-        cout<<"No se encontro";
-        salto();
-    }
-    
+Album::Album()
+{
+    id = 0;
+    nombre = "";
+    artista = "";
+    num_canc = "";
 }
 
-void mostrar(int c, album alb[]){
-
-    for(int i = 0; i < c; i++){
-    	cout<<"\n";
-        cout<<"ID: "<<alb[i].id<<endl;
-        cout<<"Nombre del album: "<<alb[i].nombre<<endl;
-        cout<<"Artista: "<<alb[i].artista<<endl;
-        cout<<"Numero de canciones: "<<alb[i].num_canc<<endl;
-        cout<<"\n";
-    }
+void Album::agrgar(int *p)
+{
+    cout<<"Ingrese el nombre del album: ";
+    cin>>nombre;
+    cout<<"Ingrese el numero de canciones del album: ";
+    cin>>num_canc;
+    cout<<"Ingrese el nombre del artista: ";
+    cin>>artista;
+    *p = *p + 1;
+    id = *p;
     salto();
 }
 
-
-
-
-int main()
+int Album::getId()
 {
-    int opc = 1;
-    int c = 0, i = 0;
 
-    album alb[4];
+    return id;
+}
 
-    while(opc != 0){
+void Album::mostrar()
+{
+        cout<<"ID: "<<id<<endl;
+        cout<<"Nombre: "<<nombre<<endl;
+        cout<<"Artista: "<<artista<<endl;
+        cout<<"Numero de canciones: "<<num_canc<<endl;
+}
+
+int main(){
+    
+    Album alb[10];
+    int opc,i = 0, bus,b = 0; //La variable i sirve como contador de los objetos
+    int *pi;//Es un puntero a la variable i
+    do{
+        cout<<"\ti: "<<i;
         cout<<"\n\t1) Ingresar \n\t2) Eliminar\n\t3) Buscar por id\n\t4) Mostrar\n\t0 para salir \n Opc: ";
         cin>>opc;
-        fflush(stdin);
         switch(opc){
             case 1:
             {   
-                c = agregar(c, alb, i);
-                i++;
+                alb[i].agrgar(&i);
                 break;
             }
             case 2:
             {
-                c = eliminar(c, alb);
+                eliminar(&i,alb);
                 break;
             }
             case 3:
             {
-                buscar(c, alb);
+                int ide;
+                b = 0;
+                cout<<"Ingrese el id a buscar: ";
+                cin>>bus;
+                for(int j = 0; j< i; j++)
+                {
+                    ide = alb[j].getId();
+                    if(bus == ide)
+                    {
+                        alb[j].mostrar();
+                        b = 1;
+                    }
+                }
+                if(b == 0)
+                    cout<<"No se encontro"<<endl;
                 break;
             }
             case 4:
             {
-                mostrar(c, alb);
+                for(int j = 0; j< i; j++ )
+                {
+                    alb[j].mostrar();
+                }
+                salto();
                 break;
             }
-            default:
-            {
-                if(opc == 0)
-                {
-                    cout<<"Saliendo...";
-                    break;
-                }
-                else
-                    cout<<"Opcion no valida";
-                
-            }
-        }
 
         }
+     }while(opc != 0);
 
-
-    return 0;
+     return 0;
 }
