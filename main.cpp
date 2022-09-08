@@ -1,13 +1,7 @@
 #include <iostream>
+#include <string.h>
 #include "admin.h"
 
-<<<<<<< HEAD
-int main(int argc, char const *argv[])
-{
-    
-
-    return 0;
-=======
 using namespace std;
 
 //class Album{
@@ -89,6 +83,8 @@ using namespace std;
 
 int main(){
     
+    admin ad;
+    ad.menu();
     
 //    Album alb[10];
 //    int opc,i = 0, bus,b = 0; //La variable i sirve como contador de los objetos
@@ -141,5 +137,4 @@ int main(){
 //     }while(opc != 0);
 
      return 0;
->>>>>>> 50031d3e908f917eaa9282c6727a40b1be2eddfb
 }
