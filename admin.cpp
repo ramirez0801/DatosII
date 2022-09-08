@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include "admin.h"
 
 admin::admin()
@@ -25,3 +26,21 @@ void admin::agregar()
     albums[i].setId(*pi+1);
     *pi += 1; 
 }
+=======
+#include "admin.h"
+
+void admin::agregar()
+{
+	
+}
+
+void admin::eliminar()
+{
+	
+}
+
+void admin::mostrar()
+{
+	
+}
+>>>>>>> 50031d3e908f917eaa9282c6727a40b1be2eddfb
