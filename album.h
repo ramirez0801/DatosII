@@ -1,19 +1,23 @@
-
 #include <iostream>
-
 
 using namespace std;
 
-class Album{
-    private:
-        int id;
-        string nombre, num_canc, artista;
-    public:
-        Album();
-        void agrgar(int*);
-        void mostrar();
-        int getId();
-        void eliminar(int*, Album);
-};
+class album
+{
+private:
+    int id;
+    char nombre[25], artista[25], num_canc[5];
+public:
+    album();
+    ~album();
+    void setId(int);
+    void setNombre(char); 
+    void setArtista(char);
+    void setCanc(char);
 
+    int getId();
+    char getNombre();
+    char getArtista();
+    char getCanc();
+};
 
