@@ -1,0 +1,5 @@
+1;Born pink;Blackpink;8
+2;The album;Blackpink;10
+3;Square up;Blackpink;5
+4;Square one;Blackpink;4
+5;Square two;Blackpink;2
