@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1666550598 source:c:\users\emmanuel r\documents\datos-2\archi-bin\binario\src\album.cpp
+	"album.h"
+
+1666550592 c:\users\emmanuel r\documents\datos-2\archi-bin\binario\include\album.h
+	<iostream>
+	<sstream>
+
+1666578382 source:c:\users\emmanuel r\documents\datos-2\archi-bin\binario\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	"admin.h"
+
+1666549216 c:\users\emmanuel r\documents\datos-2\archi-bin\binario\include\admin.h
+	<iostream>
+	<sstream>
+	<string>
+	<fstream>
+	<stdlib.h>
+	"album.h"
+
+1666579207 source:c:\users\emmanuel r\documents\datos-2\archi-bin\binario\src\admin.cpp
+	"admin.h"
+
